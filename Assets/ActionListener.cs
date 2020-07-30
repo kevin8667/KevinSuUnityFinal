@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionListener : MonoBehaviour
 {
+    //universal object to check if any character moving
     public bool inAction = false;
     // Start is called before the first frame update
     void Start()

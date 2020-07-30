@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class MenuManeger : MonoBehaviour
 {
-    public GameObject menuL1;
-    public GameObject menuL2;
+    public GameObject menuLayer2;
+    public GameObject basicMenu;
+    public GameObject cursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +18,9 @@ public class MenuManeger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!menuL2.activeSelf && Input.GetButtonDown("Cancel")) 
+        /*if (basicMenu.activeSelf && Input.GetButtonDown("Cancel") && !cursor.activeSelf) 
         {
-            menuL1.SetActive(false);
-        }
-        if (menuL2.activeSelf && Input.GetButtonDown("Cancel")) 
-        {
-            menuL2.SetActive(false);
-        }
+            menuLayer2.SetActive(false);
+        }*/
     }
 }

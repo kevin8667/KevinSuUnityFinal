@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class EnemyATB : MonoBehaviour
 {
-    public GameObject test1;
+    public GameObject character;
     [SerializeField] float basicATBSpeed = 10f;
     float finalATBSpeed;
     Status status;
     bool isWaiting;
     ActionListener actionListener;
-    Attack attack;
     // Start is called before the first frame update
     void Start()
     {
         actionListener = GameObject.Find("ActionListener").GetComponent<ActionListener>();
-        attack = gameObject.GetComponent<Attack>();
-        status = test1.GetComponent<Status>();
+        status = character.GetComponent<Status>();
         finalATBSpeed = basicATBSpeed - status.DEX * 0.1f;
         if (finalATBSpeed < 4)
         {
@@ -35,6 +33,7 @@ public class EnemyATB : MonoBehaviour
         }
        
     }
+    // ATB time without gauge
     IEnumerator WaitTimer()
     {
         isWaiting = true;
@@ -44,11 +43,12 @@ public class EnemyATB : MonoBehaviour
         {
             StartCoroutine(PauseTimer());
         }
-        attack.ATK(status.STR, GameObject.Find("PlayerCha1"));
+        Attack.ATK(status.STR, GameObject.Find("PlayerCha1"));
 
         isWaiting = false;
     }
 
+    //if other character in actions
     IEnumerator PauseTimer() 
     {
         yield return new WaitForSeconds(2);

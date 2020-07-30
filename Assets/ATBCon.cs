@@ -10,15 +10,23 @@ public class ATBCon : MonoBehaviour
     float finalATBSpeed;
     public Image aTBBar;
     public GameObject basicMenu;
-    public Button defaultButton;
-    public GameObject test1;
+    public GameObject character;
+    public GameObject cursor;
     ActionListener actionListener;
     Status status;
+    [SerializeField] AudioClip ATBFilled = null;
+    AudioSource audioSource = null;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         actionListener = GameObject.Find("ActionListener").GetComponent<ActionListener>();
-        status = test1.GetComponent<Status>();
+        status = character.GetComponent<Status>();
         finalATBSpeed = basicATBSpeed - status.DEX * 0.1f;
         if (finalATBSpeed < 4) 
         {
@@ -39,6 +47,9 @@ public class ATBCon : MonoBehaviour
         if (ATBBar.GetATBBarValue() == 1f) 
         {
             basicMenu.SetActive(true);
+            cursor.SetActive(true);
+
+            audioSource.PlayOneShot(ATBFilled);
 
         }
         

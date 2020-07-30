@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Skills : MonoBehaviour
 {
+    static public GameObject[] skillList;
     // Start is called before the first frame update
     void Start()
     {
