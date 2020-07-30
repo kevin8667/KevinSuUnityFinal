@@ -8,14 +8,7 @@ public class TopMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (basicActions == null)
-        {
-            basicActions = GameObject.FindGameObjectsWithTag("BasicActions");
-            for (int i = 0; i < basicActions.Length; i++)
-            {
-                Debug.Log(basicActions[i].name);
-            }
-        }
+       
     }
 
     // Update is called once per frame

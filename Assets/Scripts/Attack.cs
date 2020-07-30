@@ -7,14 +7,12 @@ using UnityEngine.UI;
 public class Attack : MonoBehaviour
 {
     static ActionListener actionListener;
-    CatchingTarget catchingTarget;
     public static float damage;
     public static bool attacked;
     // Start is called before the first frame update
     void Start()
     {
         actionListener = GameObject.Find("ActionListener").GetComponent<ActionListener>();
-        catchingTarget = GameObject.Find("CatchingTarget").GetComponent<CatchingTarget>();
     }
 
     // Update is called once per frame

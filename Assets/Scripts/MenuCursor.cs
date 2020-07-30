@@ -19,6 +19,14 @@ public class MenuCursor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (TopMenu.basicActions == null)
+        {
+            TopMenu.basicActions = GameObject.FindGameObjectsWithTag("BasicActions");
+            for (int i = 0; i < TopMenu.basicActions.Length; i++)
+            {
+                Debug.Log(TopMenu.basicActions[i].name);
+            }
+        }
         transform.position = TopMenu.basicActions[0].transform.position + new Vector3(-90, 0, 0);
         cursorS = cursor.GetComponent<Cursor>();
         audioSource = GetComponent<AudioSource>();

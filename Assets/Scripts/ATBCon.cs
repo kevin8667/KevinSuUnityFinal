@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class ATBCon : MonoBehaviour
 {
-    [SerializeField] float DEX = 15;
+
     [SerializeField] float basicATBSpeed = 10f;
     float finalATBSpeed;
     public Image aTBBar;
     public GameObject basicMenu;
     public GameObject character;
     public GameObject cursor;
-    ActionListener actionListener;
     Status status;
     [SerializeField] AudioClip ATBFilled = null;
     AudioSource audioSource = null;
@@ -25,15 +24,14 @@ public class ATBCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        actionListener = GameObject.Find("ActionListener").GetComponent<ActionListener>();
         status = character.GetComponent<Status>();
         finalATBSpeed = basicATBSpeed - status.DEX * 0.1f;
-        if (finalATBSpeed < 4) 
+        if (finalATBSpeed < 4)
         {
             finalATBSpeed = 4;
         }
-        
-        
+
+
 
 
     }
@@ -42,9 +40,9 @@ public class ATBCon : MonoBehaviour
     void Update()
     {
         Debug.Log(status.HP);
-        ATBBar.SetATBBarValue(ATBBar.GetATBBarValue() + 1.0f/finalATBSpeed * Time.deltaTime);
-        
-        if (ATBBar.GetATBBarValue() == 1f) 
+        ATBBar.SetATBBarValue(ATBBar.GetATBBarValue() + 1.0f / finalATBSpeed * Time.deltaTime);
+
+        if (ATBBar.GetATBBarValue() == 1f)
         {
             basicMenu.SetActive(true);
             cursor.SetActive(true);
@@ -52,11 +50,6 @@ public class ATBCon : MonoBehaviour
             audioSource.PlayOneShot(ATBFilled);
 
         }
-        
-    }
 
-    IEnumerator PauseTimer()
-    {
-        yield return new WaitForSeconds(2);
     }
 }
